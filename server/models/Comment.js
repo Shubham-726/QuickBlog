@@ -7,7 +7,7 @@ const commentSchema = new mongoose.Schema({
     isApproved: { type: Boolean, default: false },
 }, { timestamps: true });
 
-// Reuse model if already compiled to prevent OverwriteModelError
+
 const Comment = mongoose.models.Comment || mongoose.model('Comment', commentSchema);
 
 export default Comment;

@@ -11,8 +11,8 @@ export const adminLogin = async (req, res) => {
             return res.json({ success: false, message: "Invalid Credentials" })
         }
 
-        const token = jwt.sign({ email }, process.env.JWT_SECRET) //if email and password is correct we generate jwt token
-        res.json({ success: true, token })                          //int jwt we send 2 parameter email and secret key so it will generate token
+        const token = jwt.sign({ email }, process.env.JWT_SECRET) 
+        res.json({ success: true, token })                          
     } catch (error) {
         res.json({ success: false, message: error.message })
     }
@@ -20,7 +20,7 @@ export const adminLogin = async (req, res) => {
 
 export const getAllBlogsAdmin = async (req, res) => {
     try {
-        const blogs = await Blog.find({}).sort({ createdAt: -1 });  //-1 to sort in descending order
+        const blogs = await Blog.find({}).sort({ createdAt: -1 }); 
         res.json({ success: true, blogs })
     } catch (error) {
         res.json({ success: false, message: error.message })
@@ -41,7 +41,7 @@ export const getDashboard = async (req, res) => {
         const recentBlogs = await Blog.find({}).sort({ createdAt: -1 }).limit(5);
         const blogs = await Blog.countDocuments();
         const comments = await Comment.countDocuments()
-        const drafts = await Blog.countDocuments({ isPublished: false })  //count blog which is not published
+        const drafts = await Blog.countDocuments({ isPublished: false }) 
 
         const dashboardData = {
             blogs, comments, drafts, recentBlogs

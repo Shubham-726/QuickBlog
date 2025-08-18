@@ -4,7 +4,7 @@ const auth = (req, res, next)=>{
     const token = req.headers.authorization;
 
     try {
-        jwt.verify(token, process.env.JWT_SECRET) //after secret key and token verified user login
+        jwt.verify(token, process.env.JWT_SECRET) 
         next();
     } catch (error) {
         res.json({success: false, message: "Invalid token"})

@@ -9,6 +9,5 @@ const blogSchema = new mongoose.Schema({
     isPublished: { type: Boolean, required: true },
 }, { timestamps: true });
 
-const Blog = mongoose.model('blog', blogSchema); //this line is creating (or retrieving) a Mongoose model from your blogSchema.
-    
+const Blog = mongoose.model('blog', blogSchema); 
 export default Blog;
